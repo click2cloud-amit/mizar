@@ -37,7 +37,6 @@ For more details on Arktos installation, please refer to [this link](https://git
 cd
 git clone https://github.com/CentaurusInfra/mizar.git
 cd mizar
-chmod 755 setup-machine-arktos.sh
 ./setup-machine-arktos.sh
 ```
 The lab machine will be rebooted once above script is completed, you will be automatically logged out of the lab machine. 
@@ -139,7 +138,7 @@ Please refer to [Running Mizar Management Plane](https://mizar.readthedocs.io/en
 To test your environment, you can first create an arktos network object ```my-net-mizar-1```. Then create a pod in ```my-net-mizar-1```:
 
 ```bash
-cd $HOME/go/src/k8s.io/mizar
+cd $HOME/mizar
 
 kubectl create -f mizar/obj/tests/test_arktos_net.yaml
 
