@@ -22,5 +22,7 @@
 
 FROM debian
 COPY etc/docker/node-init.sh /
+COPY etc/docker/daemon-check.sh /
 COPY . /var/mizar
 RUN chmod u+x node-init.sh
+RUN chmod u+x daemon-check.sh
