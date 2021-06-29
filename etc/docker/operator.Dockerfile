@@ -21,6 +21,8 @@
 
 FROM mizarnet/python_base:latest
 COPY . /var/mizar/
+COPY . /var/mizar/wait.py
+RUN chmod +x /var/mizar/wait.py
 RUN pip3 install /var/mizar/
 RUN ln -snf /var/mizar/build/bin /trn_bin
 COPY etc/luigi.cfg /etc/luigi/luigi.cfg

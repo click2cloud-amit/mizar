@@ -487,6 +487,18 @@ spec:
       serviceAccountName: mizar-operator
       terminationGracePeriodSeconds: 0
       hostNetwork: true
+      initContainers:
+      - name: node-init
+        image: pravinmagdum/mizar_operator:pm3
+        imagePullPolicy: IfNotPresent
+        command: ["python3"]
+        #args: ["-c", "while true; do echo hello; sleep 10;done"]
+        args: ["/var/mizar/etc/docker/wait.py"]
+        securityContext:
+          privileged: true
+        volumeMounts:
+        - name: mizar
+          mountPath: /home
       containers:
       - name: mizar-operator
         image: mizarnet/endpointopr:0.8
@@ -495,3 +507,8 @@ spec:
           value: 'false'
         securityContext:
           privileged: true
+      volumes:
+      - name: mizar
+        hostPath:
+          path: /var
+          type: Directory    
